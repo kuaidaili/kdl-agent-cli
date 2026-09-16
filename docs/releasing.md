@@ -2,6 +2,15 @@
 
 当前 GitHub 为 `kuaidaili/kdl-agent-cli`，npm 使用公司用户 `kuaidaili` 的 `@kuaidaili/kdl-agent`，本轮不创建 npm Organization。公司首版 `0.1.0-beta.5` 已公开；个人包与历史附件保留，迁移步骤见[安装指南](./install.md#从个人包迁移)。
 
+## 0.1.0 正式发行结果（2026-09-16）
+
+- [GitHub Release](https://github.com/kuaidaili/kdl-agent-cli/releases/tag/v0.1.0) 与 [npm 精确版本](https://www.npmjs.com/package/@kuaidaili/kdl-agent/v/0.1.0) 已公开，源码 `580b8311923c04d724f4ef35fbf37622cbe0bccd`；latest=0.1.0，beta 保留 beta.5。
+- [候选/五平台/Release](https://github.com/kuaidaili/kdl-agent-cli/actions/runs/35049526212) 通过；[公司 Trusted Publishing](https://github.com/kuaidaili/kdl-agent-cli/actions/runs/35050241296) 完成真实 OIDC 发布并提供 provenance。首次执行因 registry 可见性延迟而超时，包被 npm 接受后回读确认，不重发或覆盖候选；同候选重跑已成功，只校验既有版本。
+- 公开 npm 包 22,346 字节、12 个允许文件，SHA256 `377d114438e6ad601794424e1769762e1b19a43a406b1067ff1cf1d04567835b`。匿名 registry 下载与 Release 逐字节一致，integrity 匹配；provenance 的公司仓库、tag、workflow、commit 与包哈希全部一致。
+- 隔离 prefix 安装固定公开包及 registry 精确版本成功（当前机器直连 GitHub 下载超时，使用已有 HTTPS_PROXY 完成），`--version` 为 0.1.0 与上述 commit；本地 npm 41 项、Python 4 项发行回归通过。未创建或读取业务凭证。
+- macOS 暂未签名；三项服务验收按[首发决定](./release-0.1.0.md)保留待完成。软件包发行不等于官网、Gateway 或服务运行验收完成。
+
+
 ## 2026-09-16 准备进度
 
 官网及公开正文的 stg3 链接已切换 www，官网安装固定公司 `@0.1.0`；npm 40 项回归通过。2026-09-16 已确认先发行 CLI 0.1.0，三项检查保留为服务上线验收；同版本记录使用 `deferred-to-service-rollout`，不伪造 passed。该例外仅限 0.1.0 且必须包含审核人、日期、决定证据及具体缺项；后续版本仍要求通过。见[首发记录](./release-0.1.0.md)。
