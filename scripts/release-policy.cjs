@@ -22,9 +22,18 @@ function validateAcceptance(record, version) {
   if (record.checks.length !== CHECKS.length || new Set(record.checks.map(item => item.id)).size !== CHECKS.length) {
     throw new Error('稳定验收记录的检查项缺失或重复');
   }
+  // 仅 0.1.0 首发采用已批准的软件先发行、服务随后上线顺序。
+  // 延后项保留原状态与证据，不以 passed 代替尚未完成的生产验收。
+  const decision = record.service_rollout;
+  const deferredAllowed = version === '0.1.0' && record.release_scope === 'cli-distribution' &&
+    decision?.status === 'pending' && decision.approved_by === record.reviewer &&
+    decision.approved_on === '2026-09-16' && /^https:\/\/[^\s]+$/.test(decision.evidence || '');
   for (const id of CHECKS) {
     const item = record.checks.find(check => check.id === id);
-    if (item?.status !== 'passed' || !/^https:\/\/[^\s]+$/.test(item.evidence || '')) {
+    const accepted = item?.status === 'passed' ||
+      (deferredAllowed && item?.status === 'deferred-to-service-rollout' &&
+       typeof item.remaining === 'string' && item.remaining.trim());
+    if (!accepted || !/^https:\/\/[^\s]+$/.test(item.evidence || '')) {
       throw new Error(`稳定验收尚未完成或缺少证据索引：${id}`);
     }
   }

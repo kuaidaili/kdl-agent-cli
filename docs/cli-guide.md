@@ -14,7 +14,7 @@
 
 将以下提示词交给 AI 助手：
 
-> 帮我安装快代理 CLI：https://stg3.kuaidaili.com/kdl-agent/docs/install.md
+> 帮我安装快代理 CLI：https://www.kuaidaili.com/kdl-agent/docs/install.md
 
 凭证由用户在本地终端输入。安装后可以提问：“查看我的账户状态，列出可用代理订单。”
 
@@ -206,7 +206,7 @@ Agent 凭证由会员中心管理。创建时核对有效期；默认有效期�
 | 创建工单 | `support.ticket.create` | 创建真实工单；不包含附件 |
 | 获取订单密钥 | `order.secret.read` | 按订单读取账户当前及未来订单密钥，并用于该订单 OpenAPI |
 
-三项默认关闭，在[Agent 设置](https://stg3.kuaidaili.com/uc/agent/settings/)按需开启。授权有效且用户已明确要求执行的业务动作，不再由 CLI 每次增加确认步骤；任务目标或关键参数不明确时仍需先澄清。基础查询仍要求有效凭证并受账户、订单归属和服务规则约束。
+三项默认关闭，在[Agent 设置](https://www.kuaidaili.com/uc/agent/settings/)按需开启。授权有效且用户已明确要求执行的业务动作，不再由 CLI 每次增加确认步骤；任务目标或关键参数不明确时仍需先澄清。基础查询仍要求有效凭证并受账户、订单归属和服务规则约束。
 
 ### 本地保存
 
@@ -237,7 +237,7 @@ Windows 对应 `%USERPROFILE%\.kdl\`。macOS/Linux 目录权限为 `0700`、凭�
 
 订单密钥读取授权意味着密钥可能进入你选择的 Agent、模型或相关服务。怀疑泄露时，仅退出 CLI 或关闭 grant 不够；还需在订单 API 设置中完成重置，并同步更新其他客户端，核对旧密钥实际失效时间。
 
-可在[安全记录](https://stg3.kuaidaili.com/uc/agent/security/)查看凭证及授权变更，在[调用监控](https://stg3.kuaidaili.com/uc/agent/monitor/)查看 Gateway 调用。便利命令直接调用的订单 OpenAPI 不应被误认为全部记录在 Gateway 监控中。
+可在[安全记录](https://www.kuaidaili.com/uc/agent/security/)查看凭证及授权变更，在[调用监控](https://www.kuaidaili.com/uc/agent/monitor/)查看 Gateway 调用。便利命令直接调用的订单 OpenAPI 不应被误认为全部记录在 Gateway 监控中。
 
 ## 版本与升级回退
 

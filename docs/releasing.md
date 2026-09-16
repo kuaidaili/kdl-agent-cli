@@ -2,6 +2,10 @@
 
 当前 GitHub 为 `kuaidaili/kdl-agent-cli`，npm 使用公司用户 `kuaidaili` 的 `@kuaidaili/kdl-agent`，本轮不创建 npm Organization。公司首版 `0.1.0-beta.5` 已公开；个人包与历史附件保留，迁移步骤见[安装指南](./install.md#从个人包迁移)。
 
+## 2026-09-16 准备进度
+
+官网及公开正文的 stg3 链接已切换 www，官网安装固定公司 `@0.1.0`；npm 40 项回归通过。2026-09-16 已确认先发行 CLI 0.1.0，三项检查保留为服务上线验收；同版本记录使用 `deferred-to-service-rollout`，不伪造 passed。该例外仅限 0.1.0 且必须包含审核人、日期、决定证据及具体缺项；后续版本仍要求通过。见[首发记录](./release-0.1.0.md)。
+
 ## 稳定发行准备验收（2026-09-14）
 
 - 包版本、锁文件、当前安装说明、API 资源链接与配套 Skill 已统一为 `0.1.0`，尚未创建稳定 tag、Release 或 npm 版本。既有 beta.5 产物保留。

@@ -7,11 +7,11 @@ Agent Gateway API 用于账户查询与业务操作；代理提取、白名单�
 | Agent Gateway API（本文） | `https://agent-gateway.kdlapi.com/v1/` | 会员中心创建的 Agent 凭证，Bearer 认证 | 账户与订单查询、报价、创建待付款订单和工单、授权获取订单密钥 |
 | 订单 OpenAPI | 对应订单返回的 `api_domain` | 订单 `secret_id`、`secret_key`，按对应接口规则认证 | 代理提取、白名单等订单操作 |
 
-[订单 OpenAPI 文档](https://stg3.kuaidaili.com/doc/api/) · [授权说明](./cli-guide.md#授权凭证与订单密钥)
+[订单 OpenAPI 文档](https://www.kuaidaili.com/doc/api/) · [授权说明](./cli-guide.md#授权凭证与订单密钥)
 
 ## 首次调用
 
-在[Agent 设置](https://stg3.kuaidaili.com/uc/agent/settings/)创建凭证，由运行环境注入 `KDL_AGENT_TOKEN`，不要写入代码或对话。
+在[Agent 设置](https://www.kuaidaili.com/uc/agent/settings/)创建凭证，由运行环境注入 `KDL_AGENT_TOKEN`，不要写入代码或对话。
 
 ```bash
 curl --fail-with-body 'https://agent-gateway.kdlapi.com/v1/account/funds' \
@@ -65,7 +65,7 @@ curl --fail-with-body 'https://agent-gateway.kdlapi.com/v1/account/funds' \
     "next_action": {
       "type": "url",
       "label": "前往会员中心创建 Agent 凭证",
-      "url": "https://stg3.kuaidaili.com/uc/agent/settings/"
+      "url": "https://www.kuaidaili.com/uc/agent/settings/"
     }
   },
   "request_id": "req_example"
@@ -119,7 +119,7 @@ curl --fail-with-body 'https://agent-gateway.kdlapi.com/v1/account/funds' \
 
 “无”仅表示无需额外敏感 grant，不表示匿名可调用。下载[Agent Gateway API 的 OpenAPI 规范文件](https://github.com/kuaidaili/kdl-agent-cli/releases/download/v0.1.0/openapi.yaml)。这里的 OpenAPI 指接口描述标准，文件描述的是本文的 Gateway API，不是原有订单 OpenAPI 产品的完整接口列表。通过[版本记录](https://github.com/kuaidaili/kdl-agent-cli/releases/tag/v0.1.0)获取配套版本及兼容要求。
 
-本指南的稳定原文地址为 `https://stg3.kuaidaili.com/kdl-agent/docs/api-guide.md`，同版本快照见 GitHub 对应 tag 下的 `docs/api-guide.md`，例如 [0.1.0 快照](https://github.com/kuaidaili/kdl-agent-cli/blob/v0.1.0/docs/api-guide.md)。所有指南提供 Markdown 原文，稳定原文跟随推荐版本；接入旧版本时使用其配套快照和 OpenAPI。webhp 文档地址不是 Gateway API 基址。
+本指南的稳定原文地址为 `https://www.kuaidaili.com/kdl-agent/docs/api-guide.md`，同版本快照见 GitHub 对应 tag 下的 `docs/api-guide.md`，例如 [0.1.0 快照](https://github.com/kuaidaili/kdl-agent-cli/blob/v0.1.0/docs/api-guide.md)。所有指南提供 Markdown 原文，稳定原文跟随推荐版本；接入旧版本时使用其配套快照和 OpenAPI。webhp 文档地址不是 Gateway API 基址。
 
 ## 账户与站内信
 
@@ -333,4 +333,4 @@ Gateway 没有通用代理转发接口。CLI 的 `proxy fetch`、`proxy auth`（
 
 收到未知错误码时保留 HTTP 状态、错误码和请求标识，采取保守失败处理，不因错误消息“看起来可忽略”继续写入。网络超时或 5xx 不能证明订单/工单没有创建；再次执行时遵守同键同参数规则。
 
-支持排查只需提交发生时间、接口路径、错误码、`request_id` 及脱敏的必要参数。不要提交完整认证请求头、Secret 响应或未脱敏的工单正文。使用[调用监控](https://stg3.kuaidaili.com/uc/agent/monitor/)与[安全记录](https://stg3.kuaidaili.com/uc/agent/security/)核对 Gateway 调用和凭证变更。
+支持排查只需提交发生时间、接口路径、错误码、`request_id` 及脱敏的必要参数。不要提交完整认证请求头、Secret 响应或未脱敏的工单正文。使用[调用监控](https://www.kuaidaili.com/uc/agent/monitor/)与[安全记录](https://www.kuaidaili.com/uc/agent/security/)核对 Gateway 调用和凭证变更。

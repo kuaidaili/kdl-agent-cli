@@ -1,0 +1,32 @@
+{
+  "schema_version": 1,
+  "version": "0.1.0",
+  "reviewer": "张阔",
+  "release_scope": "cli-distribution",
+  "service_rollout": {
+    "status": "pending",
+    "approved_by": "张阔",
+    "approved_on": "2026-09-16",
+    "evidence": "https://github.com/kuaidaili/kdl-agent-cli/blob/v0.1.0/docs/release-0.1.0.md"
+  },
+  "checks": [
+    {
+      "id": "business-e2e",
+      "status": "deferred-to-service-rollout",
+      "evidence": "https://github.com/kuaidaili/kdl-agent-cli/blob/v0.1.0/docs/release-0.1.0.md",
+      "remaining": "当前生产服务组合的授权负例、限定写与幂等、审计链路待验收"
+    },
+    {
+      "id": "production-operations",
+      "status": "deferred-to-service-rollout",
+      "evidence": "https://github.com/kuaidaili/kdl-agent-cli/blob/v0.1.0/docs/release-0.1.0.md",
+      "remaining": "运行版本、留存与告警、恢复点及恢复验证待运维归档"
+    },
+    {
+      "id": "public-entry",
+      "status": "deferred-to-service-rollout",
+      "evidence": "https://github.com/kuaidaili/kdl-agent-cli/blob/v0.1.0/docs/release-0.1.0.md",
+      "remaining": "官网、会员中心、安装指南和 Skill 正式部署后回读及首次接入待验收"
+    }
+  ]
+}

@@ -45,6 +45,31 @@ test('稳定 tag 仍要求业务验收，但不再依赖 Apple 账号', t => {
   assert.equal(checkRelease('v0.1.0-beta.6', { root }), 'beta');
 });
 
+test('0.1.0 仅凭明确首发决定允许服务验收延后，并保留缺项', () => {
+  const record = acceptance();
+  record.release_scope = 'cli-distribution';
+  record.service_rollout = { status: 'pending', approved_by: record.reviewer,
+    approved_on: '2026-09-16', evidence: 'https://example.invalid/decision' };
+  record.checks.forEach(item => {
+    item.status = 'deferred-to-service-rollout'; item.remaining = '待现场验收';
+  });
+  assert.equal(validateAcceptance(record, '0.1.0'), record);
+  for (const mutate of [
+    value => { delete value.service_rollout; },
+    value => { value.release_scope = 'production'; },
+    value => { value.service_rollout.approved_by = ''; },
+    value => { value.service_rollout.approved_on = '2026-09-17'; },
+    value => { value.service_rollout.evidence = ''; },
+    value => { value.checks[0].remaining = ''; },
+    value => { value.checks[0].evidence = ''; },
+    value => { value.checks[0].status = 'failed'; },
+    value => { value.version = '0.1.1'; },
+  ]) {
+    const value = JSON.parse(JSON.stringify(record)); mutate(value);
+    assert.throws(() => validateAcceptance(value, value.version), /验收/);
+  }
+});
+
 test('签名记录必须同时绑定双架构、来源和完整候选', () => {
   const source = { version: '0.1.0', commit: 'a'.repeat(40) };
   const sums = new Map(['arm64', 'amd64'].map(arch => [`kdl-agent_0.1.0_darwin_${arch}.tar.gz`, 'b'.repeat(64)]));

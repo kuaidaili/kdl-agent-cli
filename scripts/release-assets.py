@@ -78,7 +78,8 @@ def prepare(source, output):
         f"# 快代理 CLI {version}\n\n"
         + f"源码：{subprocess.check_output(['git', 'rev-parse', 'HEAD'], cwd=ROOT, text=True).strip()}\n\n"
         + "npm 安装器按平台下载并核对 SHA256；安装向导配套同版本 Skill。\n\n"
-        + ("此为预发行验证版本，macOS 未签名/公证；未声明最低系统兼容实测结论，真实业务以验收记录为准；不作为生产业务就绪声明。\n" if "-beta." in version else "本版 macOS 程序未做 Developer ID 签名及 Apple 公证；系统可能阻止运行，未声明最低系统实测结论。发行验证记录见同版本流水线。\n"),
+        + ("此为预发行验证版本，macOS 未签名/公证；未声明最低系统兼容实测结论，真实业务以验收记录为准；不作为生产业务就绪声明。\n" if "-beta." in version else "本版 macOS 程序未做 Developer ID 签名及 Apple 公证；系统可能阻止运行，未声明最低系统实测结论。发行验证记录见同版本流水线。\n")
+        + ("\n本次先发行 CLI 软件包，业务端到端、生产运行恢复及正式入口仍待服务上线验收；发行不代表这些检查已通过，状态见 stable-acceptance.json。\n" if version == "0.1.0" else ""),
         encoding="utf-8",
     )
     names = sorted(path for path in output.iterdir() if path.is_file() and path.name != "SHA256SUMS")
